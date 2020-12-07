@@ -13,7 +13,6 @@ export default function Header({ navigation, title }) {
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        backgroundColor: '#09af00',
         marginBottom: 20,
         justifyContent: 'center',
     },

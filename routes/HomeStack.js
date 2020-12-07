@@ -19,7 +19,7 @@ export const HomeStack = ({ navigation }) => (
             headerTitleStyle: {
                 color: 'white',
                 fontFamily: 'nunito-bold',
-                fontSize: 23
+                fontSize: 23,
             },
             headerTintColor: 'white'
         }}

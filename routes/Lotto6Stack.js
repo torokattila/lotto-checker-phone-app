@@ -11,7 +11,7 @@ export const Lotto6Stack = ({ navigation }) => (
         headerMode='screen'
         screenOptions={{
             headerStyle: {
-                backgroundColor: '#09af00',
+                backgroundColor: '#E61742',
                 height: 90
             },
             headerTitleStyle: {

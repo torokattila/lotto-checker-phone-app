@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import MainPage from './components/MainPage';
 import { AppNavigator } from './routes/Drawer';
 
 const getFonts = () => Font.loadAsync({
