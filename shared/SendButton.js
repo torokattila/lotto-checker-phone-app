@@ -41,6 +41,18 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2,
     },
+    skandiButton: {
+        backgroundColor: '#243f86',
+        width: 330,
+        height: 60,
+        marginBottom: 50,
+        borderRadius: 30,
+        elevation: 3,
+        shadowOffset: { width: 1, height: 1 },
+        shadowColor: '#333',
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+    },
     buttonText: {
         textAlign: 'center',
         textTransform: 'uppercase',

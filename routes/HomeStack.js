@@ -1,10 +1,11 @@
 import React from 'react';
+import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../components/Home';
 import Header from '../components/Header';
-import Lotto5 from '../components/Lotto5';
-import Lotto6 from '../components/Lotto6';
-import Skandi from '../components/Skandi';
+import Lotto5Stack from '../routes/Lotto5Stack';
+import Lotto6Stack from '../routes/Lotto6Stack';
+import SkandiStack from '../routes/SkandiStack';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -20,6 +21,7 @@ export const HomeStack = ({ navigation }) => (
                 color: 'white',
                 fontFamily: 'nunito-bold',
                 fontSize: 23,
+                textAlign: 'center'
             },
             headerTintColor: 'white'
         }}
@@ -29,31 +31,34 @@ export const HomeStack = ({ navigation }) => (
             name='Home'
             component={Home}
             options={{
-                headerTitle: () => <Header navigation={navigation} title='Válaszd ki a lottó típusát' />
+                headerTitle: () => <Header navigation={navigation} title='Válaszd ki a lottó típusát' type="Not_lotto" />
             }}
         />
 
         <Screen
             name="Lotto5"
-            component={Lotto5}
+            component={Lotto5Stack}
             options={{
-                title: 'Ötöslottó'
+                title: 'Ötöslottó',
+                headerShown: false,
             }}
         />
 
         <Screen
             name="Lotto6"
-            component={Lotto6}
+            component={Lotto6Stack}
             options={{
-                title: 'Hatoslottó'
+                title: 'Hatoslottó',
+                headerShown: false
             }}
         />
 
         <Screen
             name="Skandi"
-            component={Skandi}
+            component={SkandiStack}
             options={{
-                title: 'Skandináv lottó'
+                title: 'Skandináv lottó',
+                headerShown: false
             }}
         />
     </Navigator>

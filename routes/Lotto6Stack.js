@@ -12,19 +12,20 @@ export const Lotto6Stack = ({ navigation }) => (
         screenOptions={{
             headerStyle: {
                 backgroundColor: '#E61742',
-                height: 90
+                height: 100
             },
             headerTitleStyle: {
                 color: 'white',
                 fontFamily: 'nunito-bold'
-            }
+            },
+            headerTintColor: 'white'
         }}
     >
         <Screen
             name='Lotto6'
             component={Lotto6}
             options={{
-                headerTitle: () => <Header navigation={navigation} title='Hatoslottó' />
+                headerTitle: () => <Header navigation={navigation} title='Hatoslottó' type="Lotto" />
             }}
         />
     </Navigator>

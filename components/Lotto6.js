@@ -38,6 +38,11 @@ export default function Lotto6() {
                     keyboardType='numeric'
                     maxLength={2}
                 />
+                <TextInput
+                    style={styles.lotto6TextInput}
+                    keyboardType='numeric'
+                    maxLength={2}
+                />
 
             </View>
 
@@ -75,7 +80,7 @@ const styles = StyleSheet.create({
         width: 55,
         height: 55,
         fontSize: 20,
-        marginHorizontal: 10,
+        marginHorizontal: 3,
         textAlign: 'center'
     }
 });

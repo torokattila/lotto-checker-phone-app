@@ -11,20 +11,21 @@ export const SkandiStack = ({ navigation }) => (
         headerMode='screen'
         screenOptions={{
             headerStyle: {
-                backgroundColor: '#09af00',
-                height: 90
+                backgroundColor: '#243F86',
+                height: 100
             },
             headerTitleStyle: {
                 color: 'white',
                 fontFamily: 'nunito-bold'
-            }
+            },
+            headerTintColor: 'white'
         }}
     >
         <Screen
             name='Skandi'
             component={Skandi}
             options={{
-                headerTitle: () => <Header navigation={navigation} title='Skandináv Lottó' />
+                headerTitle: () => <Header navigation={navigation} title='Skandináv Lottó' type="Lotto" />
             }}
         />
     </Navigator>
