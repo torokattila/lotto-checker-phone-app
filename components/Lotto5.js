@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import SendButton from '../shared/SendButton';
 
 export default function Lotto5() {
+    const [firstInputValue, setFirstInputValue] = useState('');
+    const [secondInputValue, setSecondInputValue] = useState('');
+    const [thirdInputValue, setThirdInputValue] = useState('');
+    const [fourthInputValue, setFourthInputValue] = useState('');
+    const [fifthInputValue, setFifthInputValue] = useState('');
+
+    let lottoNumbersArray = [firstInputValue, secondInputValue, thirdInputValue, fourthInputValue, fifthInputValue];
+
     return (
         <View style={styles.lotto5Container}>
             <Image
@@ -17,26 +25,31 @@ export default function Lotto5() {
                     style={styles.lotto5TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFirstInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto5TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setSecondInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto5TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setThirdInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto5TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFourthInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto5TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFifthInputValue(text)}
                 />
 
             </View>

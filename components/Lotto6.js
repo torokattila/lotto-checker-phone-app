@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import SendButton from '../shared/SendButton';
 
 export default function Lotto6() {
+    const [firstInputValue, setFirstInputValue] = useState('');
+    const [secondInputValue, setSecondInputValue] = useState('');
+    const [thirdInputValue, setThirdInputValue] = useState('');
+    const [fourthInputValue, setFourthInputValue] = useState('');
+    const [fifthInputValue, setFifthInputValue] = useState('');
+    const [sixthInputValue, setSixthInputValue] = useState('');
+
+    let lottoNumbersArray = [firstInputValue, secondInputValue, thirdInputValue, fourthInputValue, fifthInputValue, sixthInputValue];
+
     return (
         <View style={styles.lotto6Container}>
             <Image
@@ -17,31 +26,37 @@ export default function Lotto6() {
                     style={styles.lotto6TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFirstInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto6TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setSecondInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto6TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setThirdInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto6TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFourthInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto6TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFifthInputValue(text)}
                 />
                 <TextInput
                     style={styles.lotto6TextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setSixthInputValue(text)}
                 />
 
             </View>

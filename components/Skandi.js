@@ -6,6 +6,15 @@ import SendButton from '../shared/SendButton';
 export default function Skandi() {
     const [machineIsSelected, setMachineIsSelected] = useState(false);
     const [handIsSelected, setHandIsSelected] = useState(false);
+    const [firstInputValue, setFirstInputValue] = useState('');
+    const [secondInputValue, setSecondInputValue] = useState('');
+    const [thirdInputValue, setThirdInputValue] = useState('');
+    const [fourthInputValue, setFourthInputValue] = useState('');
+    const [fifthInputValue, setFifthInputValue] = useState('');
+    const [sixthInputValue, setSixthInputValue] = useState('');
+    const [seventhInputValue, setSeventhInputValue] = useState('');
+
+    let lottoNumbersArray = [firstInputValue, secondInputValue, thirdInputValue, fourthInputValue, fifthInputValue, sixthInputValue, seventhInputValue];
 
     return (
         <View style={styles.skandiContainer}>
@@ -41,21 +50,25 @@ export default function Skandi() {
                     style={styles.skandiTextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFirstInputValue(text)}
                 />
                 <TextInput
                     style={styles.skandiTextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setSecondInputValue(text)}
                 />
                 <TextInput
                     style={styles.skandiTextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setThirdInputValue(text)}
                 />
                 <TextInput
                     style={styles.skandiTextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFourthInputValue(text)}
                 />
             </View>
 
@@ -65,16 +78,19 @@ export default function Skandi() {
                     style={styles.skandiTextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setFifthInputValue(text)}
                 />
                 <TextInput
                     style={styles.skandiTextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setSixthInputValue(text)}
                 />
                 <TextInput
                     style={styles.skandiTextInput}
                     keyboardType='numeric'
                     maxLength={2}
+                    onChangeText={text => setSeventhInputValue(text)}
                 />
             </View>
 
