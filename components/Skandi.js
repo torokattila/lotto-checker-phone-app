@@ -1,8 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, KeyboardAvoidingView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import Checkbox from '@react-native-community/checkbox';
 import SendButton from '../shared/SendButton';
 
 export default function Skandi() {
+    const [machineIsSelected, setMachineIsSelected] = useState(false);
+    const [handIsSelected, setHandIsSelected] = useState(false);
+
     return (
         <View style={styles.skandiContainer}>
             <Image
@@ -10,6 +14,26 @@ export default function Skandi() {
                 style={styles.skandiImage}
             />
             <Text style={styles.skandiMainTitle}>Add meg a számaidat:</Text>
+
+            <View style={styles.checkboxContainer}>
+                <View style={styles.machineCheckboxContainer}>
+                    <Text style={styles.machineCheckboxLabel}>Gépi sorsolás</Text>
+                    <Checkbox
+                        style={styles.machineCheckbox}
+                        value={machineIsSelected}
+                        onValueChange={setMachineIsSelected}
+                    />
+                </View>
+
+                <View style={styles.handCheckboxContainer}>
+                    <Text style={styles.handChekboxLabel}>Kézi sorsolás</Text>
+                    <Checkbox
+                        style={styles.handCheckbox}
+                        value={handIsSelected}
+                        onValueChange={setHandIsSelected}
+                    />
+                </View>
+            </View>
 
             <View style={styles.skandiTextInputs}>
 
@@ -62,14 +86,15 @@ export default function Skandi() {
 const styles = StyleSheet.create({
     skandiContainer: {
         flex: 1,
-        paddingTop: 60,
+        paddingTop: 40,
         alignItems: 'center',
     },
     skandiMainTitle: {
         fontFamily: 'nunito-bold',
         fontSize: 30,
         color: '#243F86',
-        paddingTop: 60
+        paddingTop: 40,
+        paddingBottom: 20
     },
     skandiImage: {
         width: 250,
@@ -78,7 +103,7 @@ const styles = StyleSheet.create({
     skandiTextInputs: {
         flex: 1,
         flexDirection: 'row',
-        marginTop: 40
+        marginTop: 20
     },
     skandiTextInput: {
         borderWidth: 2,
@@ -96,4 +121,21 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         position: 'absolute'
     },
+    checkboxContainer: {
+        flexDirection: 'row'
+    },
+    machineCheckboxContainer: {
+        flexDirection: 'row'
+    },
+    handCheckboxContainer: {
+        flexDirection: 'row'
+    },
+    machineCheckboxLabel: {
+        color: '#243F86',
+        fontSize: 20
+    },
+    handChekboxLabel: {
+        color: '#243F86',
+        fontSize: 20
+    }
 });
