@@ -94,7 +94,7 @@ export default function Skandi() {
                 />
             </View>
 
-            <SendButton buttonType='skandi' />
+            <SendButton numbersArray={lottoNumbersArray} buttonType='skandi' />
         </View>
     );
 }

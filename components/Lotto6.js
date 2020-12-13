@@ -61,7 +61,7 @@ export default function Lotto6() {
 
             </View>
 
-            <SendButton buttonType='lotto6' />
+            <SendButton numbersArray={lottoNumbersArray} buttonType='lotto6' />
         </View>
     );
 }

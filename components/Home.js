@@ -7,7 +7,6 @@ import {
     View
 } from 'react-native';
 import Card from '../shared/Card';
-import Header from '../components/Header';
 
 export default function Home({ navigation }) {
     const [lottoType, setLottoType] = useState([
