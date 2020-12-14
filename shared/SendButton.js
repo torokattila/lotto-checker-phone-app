@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, KeyboardAvoidingView } from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import cheerio from 'react-native-cheerio';
 
 export default function SendButton(props) {
+    let url = props.buttonType == 'lotto5' ? 'https://lottoszamok-api.herokuapp.com/otoslotto' : props.buttonType == 'lotto6' ? 'https://lottoszamok-api.herokuapp.com/hatoslotto' : props.buttonType == 'skandi' ? 'https://lottoszamok-api.herokuapp.com/skandinavlotto' : '';
     const isAllEmpty = (currentValue) => currentValue == '';
-    const numbersArray = props.numbersArray.every(isAllEmpty) ? '' : props.numbersArray.join(',');
+    const numbersFromInputString = props.numbersArray.every(isAllEmpty) ? '' : props.numbersArray.join(',');
     const [showAlertWindow, setShowAlertWindow] = useState(false);
     const [lottoNumbersFromPage, setLottoNumbersFromPage] = useState([]);
-    let sameNumbersArraySet = new Set();
+    let sameNumbersArray = [];
+    let confirmButtonColor = props.buttonType == 'lotto5' ? '#19b243' : props.buttonType == 'lotto6' ? '#E61742' : props.buttonType == 'skandi' ? '#243F86' : '';
+    const numberPattern = /^[0-9,]*$/;
+    let lottoNumbersFromPageString = lottoNumbersFromPage.join(',');
+
+    sameNumbersArray = props.numbersArray.filter(number => {
+        return lottoNumbersFromPage.indexOf(number) !== -1;
+    });
+
+    let sameNumbersArraySet = Array.from(new Set([...sameNumbersArray]));
+
+    const alertTitle = props.numbersArray.every(isAllEmpty) ? 'Töltsd ki az összes mezőt!' : !(numberPattern.test(numbersFromInputString)) ? 'A mezők csak számot tartalmazhatnak!' : sameNumbersArraySet.length == 0 ? 'Sajnos nem találtál el egy számot sem! :(' : ((props.buttonType == 'lotto5' && sameNumbersArraySet.length == 5) || (props.buttonType == 'lotto6' && sameNumbersArraySet.length == 6) || (props.buttonType == 'skandi' && sameNumbersArraySet.length == 7)) ? 'Gratulálunk, telitalálatod van!': 'Gratulálunk, ' + sameNumbersArraySet.length + ' találatod van!';
+    const alertMessage = props.numbersArray.every(isAllEmpty) ? '' : !(numberPattern.test(numbersFromInputString)) ? '' : sameNumbersArraySet.length > 0 ? 'A találataid: ' + sameNumbersArraySet.join(',') : 'A heti nyerőszámok: ' + lottoNumbersFromPageString;
 
     const showAlert = () => {
         setShowAlertWindow(true);
@@ -18,17 +30,10 @@ export default function SendButton(props) {
         setShowAlertWindow(false);
     };
 
-    const showAlertMessageVariable = 'Igen is \n meg nem is \n de talán';
-    const showAlertMessage = () => {
-        return (
-            <Text style={{ fontWeight: 'bold' }}>{showAlertMessageVariable}</Text>
-        );
-    }
-
-    const getOtoslottoSzamok = async () => {
+    const getLottoSzamok = async () => {
         let promiseArray = [];
         try {
-            const response = await fetch('https://lottoszamok-api.herokuapp.com/otoslotto', {
+            const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json'
@@ -45,7 +50,7 @@ export default function SendButton(props) {
     }
 
     useEffect(() => {
-        getOtoslottoSzamok().then(response => {
+        getLottoSzamok().then(response => {
             setLottoNumbersFromPage([...response]);
         });
     }, []);
@@ -66,13 +71,13 @@ export default function SendButton(props) {
             <AwesomeAlert
                 show={showAlertWindow}
                 showProgress={false}
-                // title={showAlertMessage()}
-                message={numbersArray}
+                title={alertTitle}
+                message={alertMessage}
                 closeOnTouchOutside={false}
                 closeOnHardwareBackPress={false}
                 showConfirmButton={true}
-                confirmText="Értem"
-                confirmButtonColor="#19b243"
+                confirmText="OK"
+                confirmButtonColor={confirmButtonColor}
                 onCancelPressed={() => {
                     hideAlert();
                 }}
