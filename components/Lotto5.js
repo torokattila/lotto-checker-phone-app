@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import SendButton from '../shared/SendButton';
 
 export default function Lotto5() {
@@ -12,50 +12,52 @@ export default function Lotto5() {
     let lottoNumbersArray = [firstInputValue, secondInputValue, thirdInputValue, fourthInputValue, fifthInputValue];
 
     return (
-        <View style={styles.lotto5Container}>
-            <Image
-                source={require('../assets/otoslotto.png')}
-                style={styles.lotto5Image}
-            />
-            <Text style={styles.lotto5MainTitle}>Add meg a számaidat:</Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.lotto5Container}>
+                <Image
+                    source={require('../assets/otoslotto.png')}
+                    style={styles.lotto5Image}
+                />
+                <Text style={styles.lotto5MainTitle}>Add meg a számaidat:</Text>
 
-            <View style={styles.lotto5TextInputs}>
+                <View style={styles.lotto5TextInputs}>
 
-                <TextInput
-                    style={styles.lotto5TextInput}
-                    keyboardType='numeric'
-                    maxLength={2}
-                    onChangeText={text => setFirstInputValue(text)}
-                />
-                <TextInput
-                    style={styles.lotto5TextInput}
-                    keyboardType='numeric'
-                    maxLength={2}
-                    onChangeText={text => setSecondInputValue(text)}
-                />
-                <TextInput
-                    style={styles.lotto5TextInput}
-                    keyboardType='numeric'
-                    maxLength={2}
-                    onChangeText={text => setThirdInputValue(text)}
-                />
-                <TextInput
-                    style={styles.lotto5TextInput}
-                    keyboardType='numeric'
-                    maxLength={2}
-                    onChangeText={text => setFourthInputValue(text)}
-                />
-                <TextInput
-                    style={styles.lotto5TextInput}
-                    keyboardType='numeric'
-                    maxLength={2}
-                    onChangeText={text => setFifthInputValue(text)}
-                />
+                    <TextInput
+                        style={styles.lotto5TextInput}
+                        keyboardType='numeric'
+                        maxLength={2}
+                        onChangeText={text => setFirstInputValue(text)}
+                    />
+                    <TextInput
+                        style={styles.lotto5TextInput}
+                        keyboardType='numeric'
+                        maxLength={2}
+                        onChangeText={text => setSecondInputValue(text)}
+                    />
+                    <TextInput
+                        style={styles.lotto5TextInput}
+                        keyboardType='numeric'
+                        maxLength={2}
+                        onChangeText={text => setThirdInputValue(text)}
+                    />
+                    <TextInput
+                        style={styles.lotto5TextInput}
+                        keyboardType='numeric'
+                        maxLength={2}
+                        onChangeText={text => setFourthInputValue(text)}
+                    />
+                    <TextInput
+                        style={styles.lotto5TextInput}
+                        keyboardType='numeric'
+                        maxLength={2}
+                        onChangeText={text => setFifthInputValue(text)}
+                    />
 
-            </View>
+                </View>
 
-            <SendButton numbersArray={lottoNumbersArray} buttonType='lotto5' />
-        </View>
+                <SendButton numbersArray={lottoNumbersArray} buttonType='lotto5' />
+            </View >
+        </TouchableWithoutFeedback>
     );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import Home from '../components/Home';
 import Header from '../components/Header';
 import Lotto5Stack from '../routes/Lotto5Stack';
@@ -10,7 +10,7 @@ import SkandiStack from '../routes/SkandiStack';
 const { Navigator, Screen } = createStackNavigator();
 
 export const HomeStack = ({ navigation }) => (
-    <Navigator
+    <Navigator initialRouteName='Home'
         headerMode="screen"
         screenOptions={{
             headerStyle: {
@@ -64,4 +64,10 @@ export const HomeStack = ({ navigation }) => (
     </Navigator>
 );
 
-export default HomeStack;
+export const AppNavigator = () => (
+    <NavigationContainer>
+        <HomeStack />
+    </NavigationContainer>
+);
+
+export default AppNavigator;

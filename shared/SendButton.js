@@ -11,7 +11,7 @@ export default function SendButton(props) {
     let sameNumbersArray = [];
     let confirmButtonColor = props.buttonType == 'lotto5' ? '#19b243' : props.buttonType == 'lotto6' ? '#E61742' : props.buttonType == 'skandi' ? '#243F86' : '';
     const numberPattern = /^[0-9,]*$/;
-    let lottoNumbersFromPageString = lottoNumbersFromPage.join(',');
+    let lottoNumbersFromPageString = props.buttonType == 'skandi' == props.machineCheckbox ? lottoNumbersFromPage.slice(0, 7).join(',') : props.buttonType == 'skandi' && props.handCheckbox ? lottoNumbersFromPage.slice(7).join(',') : lottoNumbersFromPage.join(',');
 
     sameNumbersArray = props.numbersArray.filter(number => {
         return lottoNumbersFromPage.indexOf(number) !== -1;
@@ -19,8 +19,8 @@ export default function SendButton(props) {
 
     let sameNumbersArraySet = Array.from(new Set([...sameNumbersArray]));
 
-    const alertTitle = props.numbersArray.every(isAllEmpty) ? 'Töltsd ki az összes mezőt!' : !(numberPattern.test(numbersFromInputString)) ? 'A mezők csak számot tartalmazhatnak!' : sameNumbersArraySet.length == 0 ? 'Sajnos nem találtál el egy számot sem! :(' : ((props.buttonType == 'lotto5' && sameNumbersArraySet.length == 5) || (props.buttonType == 'lotto6' && sameNumbersArraySet.length == 6) || (props.buttonType == 'skandi' && sameNumbersArraySet.length == 7)) ? 'Gratulálunk, telitalálatod van!': 'Gratulálunk, ' + sameNumbersArraySet.length + ' találatod van!';
-    const alertMessage = props.numbersArray.every(isAllEmpty) ? '' : !(numberPattern.test(numbersFromInputString)) ? '' : sameNumbersArraySet.length > 0 ? 'A találataid: ' + sameNumbersArraySet.join(',') : 'A heti nyerőszámok: ' + lottoNumbersFromPageString;
+    const alertTitle = props.numbersArray.every(isAllEmpty) ? 'Töltsd ki az összes mezőt!' : !(numberPattern.test(numbersFromInputString)) ? 'A mezők csak számot tartalmazhatnak!' : props.buttonType == 'skandi' && !props.machineCheckbox && !props.handCheckbox ? 'Válaszd ki a sorsolás típusát!' : sameNumbersArraySet.length == 0 ? 'Sajnos nem találtál el egy számot sem! :(' : ((props.buttonType == 'lotto5' && sameNumbersArraySet.length == 5) || (props.buttonType == 'lotto6' && sameNumbersArraySet.length == 6) || (props.buttonType == 'skandi' && sameNumbersArraySet.length == 7)) ? 'Gratulálunk, telitalálatod van!' : 'Gratulálunk, ' + sameNumbersArraySet.length + ' találatod van!';
+    const alertMessage = props.numbersArray.every(isAllEmpty) ? '' : !(numberPattern.test(numbersFromInputString)) ? '' : props.buttonType == 'skandi' && !props.machineCheckbox && !props.handCheckbox ? '' : sameNumbersArraySet.length > 0 ? 'A találataid: ' + sameNumbersArraySet.join(',') : 'A heti nyerőszámok: ' + lottoNumbersFromPageString;
 
     const showAlert = () => {
         setShowAlertWindow(true);
@@ -40,9 +40,21 @@ export default function SendButton(props) {
                 }
             });
             const json = await response.json();
-            json.lottoszamok.forEach(number => {
-                promiseArray.push(number);
-            });
+            if (props.buttonType == 'lotto5' || props.buttonType == 'lotto6') {
+                json.lottoszamok.forEach(number => {
+                    promiseArray.push(number);
+                });
+            }
+            if (props.buttonType == 'skandi') {
+                json.gepi_sorsolas.forEach(number => {
+                    promiseArray.push(number);
+                });
+
+                json.kezi_sorsolas.forEach(number => {
+                    promiseArray.push(number);
+                })
+            }
+
             return promiseArray;
         } catch (error) {
             console.log(error);
@@ -56,6 +68,7 @@ export default function SendButton(props) {
     }, []);
 
     return (
+
         <KeyboardAvoidingView
             behavior={Platform.OS == "ios" ? "padding" : "height"}
             style={styles.container}

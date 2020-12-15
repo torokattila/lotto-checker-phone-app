@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import { AppNavigator } from './routes/Drawer';
+import { AppNavigator } from './routes/HomeStack';
 
 const getFonts = () => Font.loadAsync({
   'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
