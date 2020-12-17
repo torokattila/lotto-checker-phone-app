@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Checkbox from '@react-native-community/checkbox';
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 import SendButton from '../shared/SendButton';
 
 export default function Skandi() {
@@ -110,7 +111,9 @@ export default function Skandi() {
                     />
                 </View>
 
-                <SendButton numbersArray={lottoNumbersArray} buttonType='skandi' machineCheckbox={machineIsSelected} handCheckbox={handIsSelected} />
+                <HideWithKeyboard>
+                    <SendButton numbersArray={lottoNumbersArray} buttonType='skandi' machineCheckbox={machineIsSelected} handCheckbox={handIsSelected} />
+                </HideWithKeyboard>
             </View>
         </TouchableWithoutFeedback>
     );

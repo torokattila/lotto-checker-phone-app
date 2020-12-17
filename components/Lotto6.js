@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 import SendButton from '../shared/SendButton';
 
 export default function Lotto6() {
@@ -62,7 +63,9 @@ export default function Lotto6() {
 
                 </View>
 
-                <SendButton numbersArray={lottoNumbersArray} buttonType='lotto6' />
+                <HideWithKeyboard>
+                    <SendButton numbersArray={lottoNumbersArray} buttonType='lotto6' />
+                </HideWithKeyboard>
             </View>
         </TouchableWithoutFeedback>
     );

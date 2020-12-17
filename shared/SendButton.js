@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, View, Text, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text, KeyboardAvoidingView, Platform } from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 export default function SendButton(props) {
@@ -69,10 +69,7 @@ export default function SendButton(props) {
 
     return (
 
-        <KeyboardAvoidingView
-            behavior={Platform.OS == "ios" ? "padding" : "height"}
-            style={styles.container}
-        >
+        <View>
             <TouchableOpacity
                 onPress={() => showAlert()}
             >
@@ -98,7 +95,7 @@ export default function SendButton(props) {
                     hideAlert();
                 }}
             />
-        </KeyboardAvoidingView>
+        </View>
     );
 }
 
