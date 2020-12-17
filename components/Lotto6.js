@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 import SendButton from '../shared/SendButton';
@@ -10,6 +10,12 @@ export default function Lotto6() {
     const [fourthInputValue, setFourthInputValue] = useState('');
     const [fifthInputValue, setFifthInputValue] = useState('');
     const [sixthInputValue, setSixthInputValue] = useState('');
+
+    const input2 = useRef(null);
+    const input3 = useRef(null);
+    const input4 = useRef(null);
+    const input5 = useRef(null);
+    const input6 = useRef(null);
 
     let lottoNumbersArray = [firstInputValue, secondInputValue, thirdInputValue, fourthInputValue, fifthInputValue, sixthInputValue];
 
@@ -29,36 +35,57 @@ export default function Lotto6() {
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setFirstInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input2.current.focus()}
                     />
                     <TextInput
+                        ref={input2}
                         style={styles.lotto6TextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setSecondInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input3.current.focus()}
                     />
                     <TextInput
+                        ref={input3}
                         style={styles.lotto6TextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setThirdInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input4.current.focus()}
                     />
                     <TextInput
+                        ref={input4}
                         style={styles.lotto6TextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setFourthInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input5.current.focus()}
                     />
                     <TextInput
+                        ref={input5}
                         style={styles.lotto6TextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setFifthInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input6.current.focus()}
                     />
                     <TextInput
+                        ref={input6}
                         style={styles.lotto6TextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setSixthInputValue(text)}
+                        returnKeyType='done'
                     />
 
                 </View>

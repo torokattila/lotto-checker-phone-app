@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Checkbox from '@react-native-community/checkbox';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
@@ -17,6 +17,13 @@ export default function Skandi() {
     const [fifthInputValue, setFifthInputValue] = useState('');
     const [sixthInputValue, setSixthInputValue] = useState('');
     const [seventhInputValue, setSeventhInputValue] = useState('');
+
+    const input2 = useRef(null);
+    const input3 = useRef(null);
+    const input4 = useRef(null);
+    const input5 = useRef(null);
+    const input6 = useRef(null);
+    const input7 = useRef(null)
 
     let lottoNumbersArray = [firstInputValue, secondInputValue, thirdInputValue, fourthInputValue, fifthInputValue, sixthInputValue, seventhInputValue];
 
@@ -68,46 +75,71 @@ export default function Skandi() {
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setFirstInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input2.current.focus()}
                     />
                     <TextInput
+                        ref={input2}
                         style={styles.skandiTextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setSecondInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input3.current.focus()}
                     />
                     <TextInput
+                        ref={input3}
                         style={styles.skandiTextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setThirdInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input4.current.focus()}
                     />
                     <TextInput
+                        ref={input4}
                         style={styles.skandiTextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setFourthInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input5.current.focus()}
                     />
                 </View>
 
                 <View style={styles.anotherInputRow}>
 
                     <TextInput
+                        ref={input5}
                         style={styles.skandiTextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setFifthInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input6.current.focus()}
                     />
                     <TextInput
+                        ref={input6}
                         style={styles.skandiTextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setSixthInputValue(text)}
+                        returnKeyType='next'
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => input7.current.focus()}
                     />
                     <TextInput
+                        ref={input7}
                         style={styles.skandiTextInput}
                         keyboardType='numeric'
                         maxLength={2}
                         onChangeText={text => setSeventhInputValue(text)}
+                        returnKeyType='done'
                     />
                 </View>
 
