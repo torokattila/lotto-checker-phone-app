@@ -14,7 +14,13 @@ export default function SendButton(props) {
     let lottoNumbersFromPageString = props.buttonType == 'skandi' == props.machineCheckbox ? lottoNumbersFromPage.slice(0, 7).join(',') : props.buttonType == 'skandi' && props.handCheckbox ? lottoNumbersFromPage.slice(7).join(',') : lottoNumbersFromPage.join(',');
 
     sameNumbersArray = props.numbersArray.filter(number => {
-        return lottoNumbersFromPage.indexOf(number) !== -1;
+        if (props.machineCheckbox) {
+            return lottoNumbersFromPage.slice(0, 7).indexOf(number) !== -1;
+        } else if (props.handCheckbox) {
+            return lottoNumbersFromPage.slice(7).indexOf(number) !== -1;
+        } else {
+            return lottoNumbersFromPage.indexOf(number) !== -1;
+        }
     });
 
     let sameNumbersArraySet = Array.from(new Set([...sameNumbersArray]));
@@ -52,7 +58,7 @@ export default function SendButton(props) {
 
                 json.kezi_sorsolas.forEach(number => {
                     promiseArray.push(number);
-                })
+                });
             }
 
             return promiseArray;

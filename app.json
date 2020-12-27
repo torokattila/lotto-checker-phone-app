@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/lotto.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.torcsi.lotto",

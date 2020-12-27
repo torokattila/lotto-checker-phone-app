@@ -154,15 +154,15 @@ export default function Skandi() {
 const styles = StyleSheet.create({
     skandiContainer: {
         flex: 1,
-        paddingTop: 40,
+        paddingTop: '10%',
         alignItems: 'center',
     },
     skandiMainTitle: {
         fontFamily: 'nunito-bold',
         fontSize: 30,
         color: '#243F86',
-        paddingTop: 40,
-        paddingBottom: 20
+        paddingTop: '10%',
+        paddingBottom: '5%',
     },
     skandiImage: {
         width: 250,
@@ -186,7 +186,6 @@ const styles = StyleSheet.create({
     anotherInputRow: {
         flexDirection: 'row',
         top: 370,
-        marginBottom: 40,
         position: 'absolute'
     },
     checkboxContainer: {

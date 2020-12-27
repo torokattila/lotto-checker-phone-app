@@ -101,7 +101,7 @@ export default function Lotto6() {
 const styles = StyleSheet.create({
     lotto6Container: {
         flex: 1,
-        paddingTop: 60,
+        paddingTop: '15%',
         alignItems: 'center',
         backgroundColor: '#fff'
     },
@@ -109,7 +109,8 @@ const styles = StyleSheet.create({
         fontFamily: 'nunito-bold',
         fontSize: 30,
         color: '#E61742',
-        paddingTop: 60
+        paddingTop: '15%',
+        textAlign: 'center'
     },
     lotto6Image: {
         width: 288,
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     lotto6TextInputs: {
         flex: 1,
         flexDirection: 'row',
-        marginTop: 120
+        marginTop: '30.5%'
     },
     lotto6TextInput: {
         borderWidth: 2,
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
         width: 55,
         height: 55,
         fontSize: 20,
-        marginHorizontal: 3,
+        marginHorizontal: '1%',
         textAlign: 'center'
     }
 });
